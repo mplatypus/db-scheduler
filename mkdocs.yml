@@ -69,6 +69,9 @@ copyright: Copyright &copy; 2023 MPlaty
 extra:
   generator: false
 
+extra_css:
+  - assets/extra.css
+
 nav:
   - home: 
     - index.md

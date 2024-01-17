@@ -1,0 +1,7 @@
+:root > * {
+    --md-code-hl-string-color: #00ca00;
+    --md-code-hl-name-color: #FFB123;
+    --md-code-hl-variable-color: #FFFF00;
+    --md-code-hl-comment-color: white;
+    --md-code-hl-variable-color: blue;
+}
