@@ -1,0 +1,89 @@
+site_name: DB Timer Docs
+site_url: https://dbtimer.mplaty.com/
+repo_url: https://github.com/MPlatypus/db-timer/
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: yellow
+    accent: amber
+  font:
+    text: Open Sans
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - search.suggest
+    - content.code.copy
+  logo: assets/logo.png
+  favicon: assets/logo.png
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          import:
+            - https://docs.python.org/3.10/objects.inv
+            - https://docs.hikari-py.dev/en/latest/objects.inv
+          options:
+            heading_level: 3
+            annotations_path: source
+            docstring_section_style: spacy
+            docstring_style: numpy
+            inherited_members: true
+            merge_init_into_class: true
+            separate_signature: true
+            show_signature_annotations: true
+            show_source: false
+            show_submodules: false
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            members_order: source
+            extensions:
+                - griffe_inherited_docstrings
+
+markdown_extensions:
+  - toc:
+      permalink: "#"
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+copyright: Copyright &copy; 2023 MPlaty
+
+extra:
+  generator: false
+
+nav:
+  - home: 
+    - index.md
+    - Libraries: libraries.md
+  - Getting Started:
+    - getting_started/index.md
+    - Basics: getting_started/basics.md
+    - Custom Database: getting_started/custom_database.md
+  - API Reference:
+    - api_reference/index.md
+    - Timer: api_reference/timer.md
+    - Base: api_reference/base.md
+    - Abc: api_reference/abc.md
+    - Errors: api_reference/errors.md
+
+watch:
+  - docs
+  - dbtimer
