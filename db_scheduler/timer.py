@@ -11,7 +11,7 @@ from .errors import TimerException
 FuncT = t.Callable[[Timer], t.Coroutine[t.Any, t.Any, None]]
 
 
-class TimerClient:
+class Client:
     """
     Timer Client
 
@@ -165,6 +165,9 @@ class TimerClient:
 
         await self._db.delete(timer.name, timer.key)
 
+    def subscribe(self, name: str, function: FuncT) -> None:
+        self._functions.update({name: function})
+
     def listen(self, name: str) -> t.Callable[[FuncT], FuncT]:
         """
         Listen for the name
@@ -181,12 +184,7 @@ class TimerClient:
         """
 
         def decorator(func: FuncT) -> FuncT:
-            if self._functions.get(name):
-                raise ValueError(
-                    "Sorry, but this timer cannot be added, as it obstructs the name of another timer listener."
-                )
-            else:
-                self._functions.update({name: func})
+            self._functions.update({name: func})
             return func
 
         return decorator
