@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from .abc import Timer, TimerStatus
 from .base import DatabaseBuilder
-from .timer import TimerClient
+from .timer import Client
 from .errors import (
     DBTimerException,
     DatabaseConnectionException,
@@ -25,7 +25,7 @@ __all__ = (
     # .base
     "DatabaseBuilder",
     # .timer
-    "TimerClient",
+    "Client",
     # .errors
     "DBTimerException",
     "DatabaseConnectionException",
