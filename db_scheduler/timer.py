@@ -34,23 +34,19 @@ class Client:
     def __init__(self, database: DatabaseBuilder, delay: int = 60):
         self._db = database
 
-        self._functions: dict[str, FuncT] = {}
+        self._functions: list[tuple[str, FuncT]] = []
 
         self._tasks: dict[str, asyncio.Task[None]] = {}
 
-    async def _delay_task(self, time: int, timer: Timer):
+    async def _delay_task(self, time: int, timer: Timer, functions: list[FuncT]):
         await asyncio.sleep(time)
-
-        if timer.name not in self._functions.keys():
-            raise KeyError("Sorry, but this timers name is not in any function key.")
-        else:
-            func = self._functions[timer.name]
 
         await self._db.delete(timer.name, timer.key)
 
         timer.status = TimerStatus.FINISHED
 
-        await func(timer)
+        for function in functions:
+            await function(timer)
 
         self._tasks.pop(timer.key)
 
@@ -58,9 +54,21 @@ class Client:
         """This checks if the timer either needs to be added to the tasks list, or not."""
         if timer.key in self._tasks.keys():
             raise KeyError("Timer key, matches with a pre-existing task.")
+        
+        func_list: list[FuncT] = []
+        
+        for func in self._functions:
+            name = func[0]
+            func = func[1]
 
-        if timer.name not in self._functions.keys():
-            raise KeyError("Sorry, but this timers name is not in any function key.")
+            if name == timer.name:
+                func_list.append(func)
+
+        if len(func_list) <= 0:
+            raise ValueError("No functions where started for this timer, as it does not exist.")
+        
+        # TODO: Add a function to delete the timer if no functions exist (if user wants that.)
+
 
         current_time = datetime.datetime.now()
 
@@ -68,7 +76,7 @@ class Client:
 
         if timer_end < current_time + datetime.timedelta(hours=1):
             timer_length = int((timer_end - current_time).total_seconds())
-            task = asyncio.create_task(self._delay_task(timer_length, timer))
+            task = asyncio.create_task(self._delay_task(timer_length, timer, func_list))
             self._tasks.update({timer.key: task})
 
     async def load(self) -> None:
@@ -165,8 +173,8 @@ class Client:
 
         await self._db.delete(timer.name, timer.key)
 
-    def subscribe(self, name: str, function: FuncT) -> None:
-        self._functions.update({name: function})
+    def subscribe(self, name: str, func: FuncT) -> None:
+        self._functions.append((name, func))
 
     def listen(self, name: str) -> t.Callable[[FuncT], FuncT]:
         """
@@ -184,7 +192,7 @@ class Client:
         """
 
         def decorator(func: FuncT) -> FuncT:
-            self._functions.update({name: func})
+            self._functions.append((name, func))
             return func
 
         return decorator
