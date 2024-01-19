@@ -29,8 +29,6 @@ This is a slowly updating list, of databases, supported by this library.
 
             self._kwargs.update(kwargs)
 
-            print(self._kwargs)
-
 
         async def connect(self) -> None:
             self._pool = await asyncpg.create_pool(
