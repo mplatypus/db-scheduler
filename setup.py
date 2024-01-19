@@ -18,7 +18,7 @@ def parse_requirements_file(path: str) -> t.List[str]:
 
 setup(
     name="db-scheduler",
-    version="0.1.0",
+    version="0.1.1",
     description="A DB Scheduler, for all your scheduler needs.",
     long_description=long_description(),
     long_description_content_type="text/markdown",
