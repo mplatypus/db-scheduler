@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 import typing as t
 
 
-name = "ongaku"
+name = "db_scheduler"
 
 
 def long_description() -> str:
@@ -17,16 +17,16 @@ def parse_requirements_file(path: str) -> t.List[str]:
 
 
 setup(
-    name="hikari-ongaku",
+    name="db-scheduler",
     version="0.3.0",
     description="A voice library, for hikari.",
     long_description=long_description(),
     long_description_content_type="text/markdown",
     author="MPlaty",
     author_email="contact@mplaty.com",
-    url="https://github.com/MPlatypus/hikari-ongaku",
+    url="https://github.com/MPlatypus/db_scheduler",
     packages=find_namespace_packages(include=[name + "*"]),
-    package_data={"ongaku": ["py.typed"]},
+    package_data={"db_scheduler": ["py.typed"]},
     license="MIT",
     include_package_data=True,
     zip_safe=False,
@@ -36,7 +36,7 @@ setup(
     },
     python_requires=">=3.11.0, <3.13",
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Stable/Release",
         "Framework :: AsyncIO",
         "Intended Audience :: Developers",
         "Natural Language :: English",
