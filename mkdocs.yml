@@ -1,6 +1,6 @@
-site_name: DB Timer Docs
-site_url: https://dbtimer.mplaty.com/
-repo_url: https://github.com/MPlatypus/db-timer/
+site_name: DB Scheduler Docs
+site_url: https://db-scheduler.mplaty.com/
+repo_url: https://github.com/MPlatypus/db-scheduler/
 
 theme:
   name: material
@@ -89,4 +89,4 @@ nav:
 
 watch:
   - docs
-  - dbtimer
+  - db_scheduler

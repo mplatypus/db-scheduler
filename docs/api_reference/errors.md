@@ -1,3 +1,3 @@
 # Errors
 
-::: dbtimer.errors
+::: db_scheduler.errors

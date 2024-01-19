@@ -18,21 +18,21 @@ def parse_requirements_file(path: str) -> t.List[str]:
 
 setup(
     name="db-scheduler",
-    version="0.3.0",
-    description="A voice library, for hikari.",
+    version="0.1.0",
+    description="A DB Scheduler, for all your scheduler needs.",
     long_description=long_description(),
     long_description_content_type="text/markdown",
     author="MPlaty",
     author_email="contact@mplaty.com",
-    url="https://github.com/MPlatypus/db_scheduler",
+    url="https://github.com/MPlatypus/db-scheduler",
     packages=find_namespace_packages(include=[name + "*"]),
     package_data={"db_scheduler": ["py.typed"]},
     license="MIT",
     include_package_data=True,
     zip_safe=False,
-    install_requires=parse_requirements_file("requirements.txt"),
     extras_require={
         "docs": parse_requirements_file("doc_requirements.txt"),
+        #"dev": parse_requirements_file("dev_requirements.txt")
     },
     python_requires=">=3.11.0, <3.13",
     classifiers=[
