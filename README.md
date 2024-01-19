@@ -1,4 +1,4 @@
-# db-timer
+# DB Scheduler
 A custom database timer handler, so if your application restarts, your timers still run!
 
 This is a simple database scheduling system, that allows for your program, to be scheduled.
