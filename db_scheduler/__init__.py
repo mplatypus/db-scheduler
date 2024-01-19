@@ -3,8 +3,7 @@ DB Scheduler
 
 A Scheduler, that stores its data in a database, for easy restarting, and memory retention!
 
-[Documentation](https://db-scheduler.mplaty.com/)
-[Github](https://github.com/MPlatypus/db-scheduler/)
+[Documentation](https://db-scheduler.mplaty.com/) | [Github](https://github.com/MPlatypus/db-scheduler/)
 """
 
 from __future__ import annotations
@@ -12,7 +11,12 @@ from __future__ import annotations
 from .abc import Timer, TimerStatus
 from .base import DatabaseBuilder
 from .timer import TimerClient
-from .errors import DBTimerException, DatabaseConnectionException, DatabaseShutdownException, TimerException
+from .errors import (
+    DBTimerException,
+    DatabaseConnectionException,
+    DatabaseShutdownException,
+    TimerException,
+)
 
 __all__ = (
     # .abc

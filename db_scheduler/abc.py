@@ -1,10 +1,12 @@
 import attrs
 import enum
 
+
 class TimerStatus(enum.Enum):
     """
     The current state, of the [Timer][db_scheduler.abc.Timer]
     """
+
     FINISHED = 0
     """The timer has finished."""
     STARTED = 1
@@ -25,7 +27,8 @@ class Timer:
 
     The base timer, that is returned when a Timer gets started, or ends.
     """
-    name:str
+
+    name: str
     """The name, attached to a function, that it will call."""
     key: str
     """The key, or unique ID given."""
@@ -35,6 +38,7 @@ class Timer:
     """The default time, that this event will take."""
     status: TimerStatus
     """The current state of this timer."""
+
 
 # MIT License
 

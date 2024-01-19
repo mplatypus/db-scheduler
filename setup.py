@@ -30,9 +30,7 @@ setup(
     license="MIT",
     include_package_data=True,
     zip_safe=False,
-    extras_require={
-        "docs": parse_requirements_file("doc_requirements.txt")
-    },
+    extras_require={"docs": parse_requirements_file("doc_requirements.txt")},
     python_requires=">=3.11.0, <3.13",
     classifiers=[
         "Development Status :: 5 - Production/Stable",

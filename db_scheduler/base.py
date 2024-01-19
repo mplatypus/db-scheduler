@@ -5,6 +5,7 @@ import typing as t
 
 from .abc import Timer
 
+
 class DatabaseBuilder(abc.ABC):
     """
     Database Builder
@@ -51,14 +52,14 @@ class DatabaseBuilder(abc.ABC):
         ----------
         timer : Timer
             The timer you wish to add.
-        
+
         Raises
         ------
         DatabaseUniqueException
             a name/key value already exists of this type.
         """
         ...
-    
+
     @abc.abstractmethod
     async def fetch(self, name: str, key: str) -> Timer | None:
         """
@@ -130,6 +131,7 @@ class DatabaseBuilder(abc.ABC):
         Clear All timers present in the database.
         """
         ...
+
 
 # MIT License
 
