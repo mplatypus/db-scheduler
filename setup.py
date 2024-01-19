@@ -31,12 +31,11 @@ setup(
     include_package_data=True,
     zip_safe=False,
     extras_require={
-        "docs": parse_requirements_file("doc_requirements.txt"),
-        #"dev": parse_requirements_file("dev_requirements.txt")
+        "docs": parse_requirements_file("doc_requirements.txt")
     },
     python_requires=">=3.11.0, <3.13",
     classifiers=[
-        "Development Status :: 5 - Stable/Release",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: AsyncIO",
         "Intended Audience :: Developers",
         "Natural Language :: English",
