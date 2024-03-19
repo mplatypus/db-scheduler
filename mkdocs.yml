@@ -81,11 +81,9 @@ nav:
     - Basics: getting_started/basics.md
     - Custom Database: getting_started/custom_database.md
   - API Reference:
-    - api_reference/index.md
-    - Timer: api_reference/timer.md
-    - Base: api_reference/base.md
-    - Abc: api_reference/abc.md
-    - Errors: api_reference/errors.md
+    - api/index.md
+    - Client: api/client.md
+    - Handlers: api/handlers.md
 
 watch:
   - docs

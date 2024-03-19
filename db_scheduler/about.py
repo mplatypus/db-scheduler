@@ -1,30 +1,17 @@
-class DBTimerException(Exception):
-    """
-    The base exception for all DB Timer errors.
-    """
+"""About db scheduler."""
 
+import typing as t
 
-class DatabaseConnectionException(DBTimerException):
-    """
-    Raised when a connection to the database fails.
-    """
-
-
-class DatabaseShutdownException(DBTimerException):
-    """
-    Raised when an issue occurs trying to shutdown the database.
-    """
-
-
-class TimerException(Exception):
-    """
-    Raised when an error occurs with creating, starting or deleting a Timer.
-    """
-
+__author__: t.Final[str] = "MPlaty"
+__author_email__: t.Final[str] = "contact@mplaty.com"
+__maintainer__: t.Final[str] = "MPlaty"
+__license__: t.Final[str] = "MIT"
+__url__: t.Final[str] = "https://github.com/MPlatypus/hikari-ongaku"
+__version__: t.Final[str] = "0.2.0"
 
 # MIT License
 
-# Copyright (c) 2024 Platy
+# Copyright (c) 2023 MPlatypus
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
