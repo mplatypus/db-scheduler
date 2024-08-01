@@ -12,6 +12,8 @@ import asyncio
 from .handlers import BaseHandler
 from .abc import Timer
 
+CallT = t.Callable[[Timer], t.Coroutine[t.Any, t.Any, None]]
+
 class Client:
     """
     Client.
@@ -25,7 +27,7 @@ class Client:
     ) -> None:
         self._handler = handler
 
-        self._listeners: list[tuple[str, t.Type[t.Callable[[Timer], None]]]]
+        self._listeners: list[tuple[str, t.Type[CallT]]]
 
         self._tasks: dict[str, asyncio.Task[None]] = {}
 
@@ -80,7 +82,7 @@ class Client:
         """
 
     def listen(self, name: str):
-        def listener(func: t.Awaitable[t.Callable[[Timer], None]]):
+        def listener(func: CallT):
             self._listeners.append((name, func))
 
         return listener
